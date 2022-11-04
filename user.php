@@ -31,6 +31,14 @@
                 </div>
                 <div class="main-content">
                     <div class="users-list">
+                        <div class="search-bar">
+                            <div class="field input">
+                                <input type="text" placeholder="Поиск пользователя..">
+                            </div>
+                            <div class="field button">
+                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
                         <a href="#">
                             <img src="img/pic.jpg" alt="Упс..." class="avatar">
                             <div class="details">
@@ -65,7 +73,7 @@
                                     <input type="text" placeholder="Текст сообщения">
                                 </div>
                                 <div class="field button">
-                                    <input type="submit" value="Отправить">
+                                    <button><i class="fa-solid fa-paper-plane"></i></button>
                                 </div>
                             </div>
                         </div>

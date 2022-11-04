@@ -15,41 +15,41 @@
                     <header>
                         Ez Chat
                     </header>
-                    <form action="#">
+                    <form action="#" enctype="multipart/form-data">
                         <div class="error-txt">
-                            Произошла ошибка!
                         </div>
                         <div class="name-details">
                             <div class="field input">
                                 <label>Имя</label>
-                                <input type="text" placeholder="Имя">
+                                <input type="text" name="fname" placeholder="Имя" required>
                             </div>
                             <div class="field input">
                                 <label>Фамилия</label>
-                                <input type="text" placeholder="Фамилия">
+                                <input type="text" name="lname" placeholder="Фамилия" required>
                             </div>
                         </div>
                         <div class="field input">
                             <label>Почта</label>
-                            <input type="email" placeholder="Почта">
+                            <input type="email" name="email" placeholder="Почта" require>
                         </div>
                         <div class="field input">
                             <label>Пароль</label>
-                            <input type="password" placeholder="Пароль">
+                            <input type="password" name="pswrd" placeholder="Пароль" require>
                             <i class="fas fa-eye"></i>
                         </div>
                         <div class="field image">
                             <label>Аватар</label>
-                            <input type="file">
+                            <input type="file" name="image" require>
                         </div>
                         <div class="field button">
                             <input type="submit" value="Зарегистрироваться">
                         </div>
                     </form>
-                    <div class="link">Зарегистрированы?<a href="#">Войти в аккаунт</a></div>
+                    <div class="link">Зарегистрированы?<a href="index.php">Войти в аккаунт</a></div>
                 </section>
             </div>
         </div>
         <script src="js/pass-show-hide.js"></script>
+        <script src="js/signup.js"></script>
     </body>
 </html>
