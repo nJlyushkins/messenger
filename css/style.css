@@ -12,16 +12,24 @@ body{
     background: #f7f7f7;
 }
 .wrapper{
+    background:rgb(241, 241, 241);
+    width:95vw;
+    height:95vh;
+}
+.auth{
     background:#fff;
     width:450px;
     border-radius: 16px;
     box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
                 0 32px 64px -48px rgba(0,0,0,0.5);
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
 }
 
 .form{
     padding: 25px 30px;
-
 }
 .form header{
     font-size:25px;
@@ -51,11 +59,24 @@ form .name-details .field:last-child{
 }
 .form form .field{
     display: flex;
+    position: relative;
     flex-direction: column;
     margin-bottom:10px;
 }
 .form form .field input{
     outline:none;
+}
+.form form .field i{
+    position:absolute;
+    right:15px;
+    color:#ccc;
+    top:65%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.form form .field i.active::before{
+    color:#333;
+    content:"\f070";
 }
 .form form .input input{
     height:40px;
@@ -65,7 +86,6 @@ form .name-details .field:last-child{
     border: 1px solid #ccc;
     border-radius:5px;
 }
-
 .form form .image input{
     font-size:16px;
 }
@@ -80,7 +100,6 @@ form .name-details .field:last-child{
     cursor:pointer;
     border-radius:5px;
 }
-
 .form .link{
     font-size:17px;
     text-align: center;
@@ -88,4 +107,239 @@ form .name-details .field:last-child{
 }
 .form .link a:hover{
     text-decoration: underline;
+}
+.sidebar{
+    position: fixed;
+    width:200px;
+    height:95%;
+    background:#333;
+    padding:30px 0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    z-index: 5;
+}
+.sidebar h2{
+    color:#fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom:30px;
+}
+.sidebar ul li{
+    padding:15px;
+    border-bottom:1px solid rgba(0,0,0,0.1);
+    border-top:1px solid rgba(99, 99, 99, 0.3);
+    list-style: none;
+    cursor: pointer;
+}
+.sidebar ul li:hover{
+    transition: 0.2s;
+    transform: translateY(-5%) translateX(5%);
+    background:rgb(117, 117, 117);
+}
+.sidebar ul li a{
+    color:#fff;
+    display:block;
+}
+.sidebar ul li a i{
+    width:30px;
+}
+.prof-info{
+    color:#fff;
+    display:flex;
+    padding-left:5px;
+    padding-bottom:5px;
+}
+.prof-info .avatar{
+    width:65px;
+    border-radius:50%;
+    object-fit: cover;
+    border:2px solid #fff;
+}
+.prof-info .details{
+    padding-left:10px;
+    align-items: center;
+    transform:translateY(15%);
+}
+.prof-info .details span{
+    font-size:20px;
+    font-weight: 200;
+}
+.prof-info .details p{
+    font-size:17px;
+}
+.main-content{
+    position: absolute;
+    padding-left:200px;
+    width:95vw;
+    height:95vh;
+    display: flex;
+}
+.users-list{
+    padding-top:10px;
+    max-height:95%;
+    width:35vw;
+    overflow-y:auto;
+}
+:is(.users-list,.chat-box .messenger .messages)::-webkit-scrollbar{
+    width:0px;
+}
+.users-list a{
+    display:flex;
+    position: relative;
+    background:rgb(238, 238, 238);
+    border: 1px solid rgba(51, 51, 51,0.1);
+    border-radius:5px;
+    margin-top:2px;
+    max-width: 35vw;
+}
+.users-list a:hover{
+    transition:0.2s;
+    background:rgb(216, 216, 216);
+}
+.users-list a .details{
+    color:#333;
+    padding-top:2px;
+}
+.users-list a .details span{
+    font-size:18px;
+    display:flex;
+}
+.users-list a .details span .status-dot{
+    color:rgb(28, 197, 28);
+}
+.users-list a .details span .status-dot.offline{
+    color:#333;
+}
+.users-list a .details span i{
+    padding-top:2px;
+    padding-left:2px;
+}
+.users-list a .details p{
+    padding-top:5px;
+    color:rgb(36, 36, 36);
+    font-size:17px;
+    max-width:100%;
+    max-height:60%;
+}
+.users-list a .avatar{
+    width:65px;
+    border-radius:50%;
+    object-fit: cover;
+    border:2px solid #fff;
+}
+.chat-box{
+    width:65%;
+    height:100%;
+    margin-left:5px;
+    background:rgb(214, 214, 214);
+    border-radius: 15px;
+    box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+    0 32px 64px -48px rgba(0,0,0,0.5);
+    box-shadow: inset 0 32px 32px -32px rgb(0 0 0 / 5%),
+    inset 0 32px 32px -32px rgb(0 0 0 / 5%);
+}
+.chat-box .user{
+    display:flex;
+    width:100%;
+    background:#f7f7f7;
+    border-top-left-radius:12px;
+    border-top-right-radius:12px;
+}
+.chat-box .user .details{
+    font-size:20px;
+    font-weight: 300;
+}
+.chat-box .messenger{
+    position:relative;
+}
+.chat-box .messenger .messages{
+    margin-top:2px;
+    width:100%;
+    height:80vh;
+    overflow-y: auto;
+    padding:10px 30px 20px 30px;
+}
+.chat-box .messenger .messages .chat{
+    padding:8px 16px;
+    font-size:17px;
+}
+.chat-box .messenger .messages .outgoing{
+    display:flex;
+}
+.outgoing .details p{
+    padding: 10px;
+    text-align: center;
+}
+.outgoing .details{
+    background:#333;
+    color:#fff;
+    min-height:5vh;
+    max-height:30vh;
+    max-width:30vw;
+    min-width:10vw;
+    border-radius:12px 12px 0 12px;
+    margin-left:auto;
+}
+.chat-box .messenger .messages .incoming{
+    display:flex;
+}
+.incoming .details p{
+    padding: 10px;
+    text-align: center;
+}
+.incoming .details{
+    background:#fff;
+    color:#333;
+    min-height:5vh;
+    max-height:30vh;
+    max-width:30vw;
+    min-width:10vw;
+    border-radius:12px 12px 12px 0;
+    margin-right:auto;
+}
+.chat-box .messenger .sender{
+    width:100%;
+    background:#f7f7f7;
+    height:70px;
+    border-radius: 0 0 12px 12px;
+    display:flex;
+    padding:5px;
+}
+.chat-box .messenger .sender .input{
+    width:90%;
+}
+.chat-box .messenger .sender .input input{
+    width:100%;
+    height:100%;
+    font-size:14px;
+    border:1px solid #333;
+    border-radius:10px 0px 0px 10px;
+}
+.chat-box .messenger .sender .input input:focus{
+    transition:0.2s;
+    font-size:16px;
+}
+.chat-box .messenger .sender .button{
+    width:10%;
+}
+.chat-box .messenger .sender .button input{
+    width:100%;
+    height:100%;
+    font-size:14px;
+    color:#333;
+    background:#f7f7f7;
+    border:1px solid #333;
+    cursor:pointer;
+    border-radius:0px 10px 10px 0px;
+}
+.chat-box .messenger .sender .button input:hover{
+    transition: 0.2s;
+    font-size:19px;
+    background:#e7e7e7;
+}
+.chat-box .user .avatar{
+    width:70px;
+    border-radius:50%;
+    object-fit: cover;
+    border:2px solid #fff;
 }
