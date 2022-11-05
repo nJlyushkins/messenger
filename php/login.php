@@ -8,6 +8,7 @@
         if(mysqli_num_rows($sql) > 0){
             $row = mysqli_fetch_assoc($sql);
             $_SESSION['unique_id'] = $row['unique_id'];
+            $sql1 = mysqli_query($conn,"UPDATE users SET status = '1' WHERE unique_id = {$row['unique_id']}");
             echo 'success';
         }else{
             echo 'This user is not registred!';

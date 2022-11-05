@@ -147,6 +147,7 @@ form .name-details .field:last-child{
 .prof-info{
     color:#fff;
     display:flex;
+    position: relative;
     padding-left:5px;
     padding-bottom:5px;
 }
@@ -181,32 +182,32 @@ form .name-details .field:last-child{
     width:35vw;
     overflow-y:auto;
 }
-.users-list .search-bar{
+.search-bar{
     display:flex;
     width:100%;
     padding-left:5px;
     padding-right:5px;
 }
-.users-list .search-bar .input{
+.search-bar .input{
     width:90%;
 }
-.users-list .search-bar .input input{
+.search-bar .input input{
     width:100%;
     font-size:17px;
     border:1px solid #333;
     border-radius:5px 0px 0px 5px;
 }
-.users-list .search-bar .button{
+.search-bar .button{
     width:10%;
 }
-.users-list .search-bar .button button{
+.search-bar .button button{
     width:100%;
     height:100%;
     cursor:pointer;
     border:1px solid #333;
     border-radius:0px 5px 5px 0px;
 }
-.users-list .search-bar .button button:hover{
+.search-bar .button button:hover{
     transition: 0.2s;
     background-color: rgb(220, 220, 220);
 }
@@ -223,10 +224,6 @@ form .name-details .field:last-child{
     max-width: 35vw;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.1),
                 0 5px 5px -48px rgba(0,0,0,0.5);
-}
-.users-list a:hover{
-    transition:0.2s;
-    background:rgb(216, 216, 216);
 }
 .users-list a .details{
     color:#333;
@@ -309,7 +306,6 @@ form .name-details .field:last-child{
     background:#333;
     color:#fff;
     min-height:5vh;
-    max-height:30vh;
     max-width:30vw;
     min-width:10vw;
     border-radius:12px 12px 0 12px;
@@ -340,25 +336,19 @@ form .name-details .field:last-child{
     display:flex;
     padding:5px;
 }
-.chat-box .messenger .sender .input{
+.chat-box .messenger .sender input{
     width:90%;
-}
-.chat-box .messenger .sender .input input{
-    width:100%;
     height:100%;
     font-size:14px;
     border:1px solid #333;
     border-radius:10px 0px 0px 10px;
 }
-.chat-box .messenger .sender .input input:focus{
+.chat-box .messenger .sender input:focus{
     transition:0.2s;
     font-size:16px;
 }
-.chat-box .messenger .sender .button{
+.chat-box .messenger .sender button{
     width:10%;
-}
-.chat-box .messenger .sender .button button{
-    width:100%;
     height:60px;
     font-size:19px;
     color:#333;
@@ -367,7 +357,7 @@ form .name-details .field:last-child{
     cursor:pointer;
     border-radius:0px 10px 10px 0px;
 }
-.chat-box .messenger .sender .button button:hover{
+.chat-box .messenger .sender button:hover{
     transition: 0.2s;
     font-size:24px;
     background:#e7e7e7;

@@ -1,23 +1,27 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Ez Chat</title>
-        <link rel="stylesheet" href="css/style.css">
-        <script src="https://kit.fontawesome.com/70cf188997.js" crossorigin="anonymous"></script>
-    </head>
+<?php 
+    session_start();
+    if(!isset($_SESSION['unique_id'])){
+        header("location: index.php");
+    }
+?>
+
+<?php include_once "php/header.php" ?>
     <body>
         <div class="wrapper">
             <div class="content">
+                <?php 
+                    include_once "php/config.php";
+                    $sql = mysqli_query($conn,"SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
+                    if(mysqli_num_rows($sql) > 0){
+                        $row = mysqli_fetch_assoc($sql);
+                    }
+                ?>
                 <div class="sidebar">
                     <h2> Ez Chat</h2>
                     <div class="prof-info">
-                        <img class="avatar" src="img/pic.jpg" alt="Упс..">
+                        <img class="avatar" src=<?php echo "php/img/" . $row['img']?> alt="Упс..">
                         <div class="details">
-                            <span>Гена Цид</span>
-                            <p>В сети</p>
+                            <span><?php echo $row['fname'] . " " . $row['lname'] ?></span>
                         </div>
                     </div>
                     <ul>
@@ -30,7 +34,7 @@
                     </ul>
                 </div>
                 <div class="main-content">
-                    <div class="users-list">
+                    <div class="users-panel">
                         <div class="search-bar">
                             <div class="field input">
                                 <input type="text" placeholder="Поиск пользователя..">
@@ -39,47 +43,44 @@
                                 <button><i class="fa-solid fa-magnifying-glass"></i></button>
                             </div>
                         </div>
-                        <a href="#">
-                            <img src="img/pic.jpg" alt="Упс..." class="avatar">
-                            <div class="details">
-                                <span>Андрей Санников<div class="status-dot"><i class="fa fa-circle"></i></div></span>
-                                <p>Привет!</p>
-                            </div>
-                        </a>
+                        <div class="users-list">
+
+                        </div>
                     </div>
                     <div class="chat-box">
+                        <?php
+                            if(key_exists('user_id',$_GET)){
+                                $user_id = mysqli_real_escape_string($conn,$_GET['user_id']);
+                            }
+                            else{
+                                $user_id = $_SESSION['unique_id'];
+                            }
+                            $sql1 = mysqli_query($conn,"SELECT * FROM users WHERE unique_id = {$user_id}");
+                            if(mysqli_num_rows($sql1) > 0){
+                                $row1 = mysqli_fetch_assoc($sql1);
+                            }
+                        ?>
                         <div class="user">
-                            <img src="img/pic.jpg" alt="Упс.." class="avatar">
+                            <img class="avatar" src=<?php echo "php/img/" . $row1['img']?> alt="Упс..">
                             <div class="details">
-                                <span>Андрей Санников</span>
-                                <p>Печатает...</p>
+                                <span><?php echo $row1['fname'] . " " . $row1['lname'] ?></span>
+                                <p><?php if($row1['status']){echo 'В сети';}else{echo 'Не в сети';} ?></p>
                             </div>
                         </div>
                         <div class="messenger">
                             <div class="messages">
-                                <div class="chat outgoing">
-                                    <div class="details">
-                                        <p>Привет! Как твои дела??</p>
-                                    </div>
-                                </div>
-                                <div class="chat incoming">
-                                    <div class="details">
-                                        <p>Добрый вечер :) Дела хорошо очень даже</p>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="sender">
-                                <div class="field input">
-                                    <input type="text" placeholder="Текст сообщения">
-                                </div>
-                                <div class="field button">
-                                    <button><i class="fa-solid fa-paper-plane"></i></button>
-                                </div>
-                            </div>
+                            <form action="#" class="sender" autocomplete="off">
+                                <input type="text" name="outgoing_id" value="<?php echo $_SESSION['unique_id'];?>" hidden>
+                                <input type="text" name="user_id" value="<?php echo $user_id;?>" hidden>
+                                <input class="input-field" type="text" name="message" placeholder="Текст сообщения">
+                                <button><i class="fa-solid fa-paper-plane"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="js/user.js"></script>
     </body>
 </html>

@@ -26,11 +26,11 @@
                         $new_img_name = $time.$img_name;
                         
                         if(move_uploaded_file($tmp_name, "img/".$new_img_name)){
-                            $status = "Active now";
+                            $status = 1;
                             $random_id = rand(time(),10000000);
 
                             //Я ЗАЕБАЛСЯ БЛЯТЬ ПОМОГИТЕ!!!
-                            $sql2 = mysqli_query($conn,"INSERT INTO users (unique_id,fname,lname,email,pswrd,img,status) VALUES ({$random_id},'{$fname}','{$lname}','{$email}','{$pswrd}','{$new_img_name}','{$status}')");
+                            $sql2 = mysqli_query($conn,"INSERT INTO users (unique_id,fname,lname,email,pswrd,img,status) VALUES ({$random_id},'{$fname}','{$lname}','{$email}','{$pswrd}','{$new_img_name}',{$status})");
                             if($sql2){
                                 $sql3 = mysqli_query($conn,"SELECT * FROM users WHERE email = '{$email}'");
                                 if(mysqli_num_rows($sql3)>0){
