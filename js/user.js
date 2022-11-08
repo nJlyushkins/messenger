@@ -7,6 +7,8 @@ inputField = form.querySelector(".input-field"),
 sendBtn = form.querySelector("button"),
 chatBox = document.querySelector(".main-content .chat-box .messenger .messages");
 
+let lastMsg;
+
 form.onsubmit = (e)=>{
     e.preventDefault();
 }
@@ -69,6 +71,17 @@ setInterval(()=>{
     }
 },500);
 
+chatBox.onmouseenter = () =>{
+    chatBox.classList.add("active");
+}
+chatBox.onmouseleave = () =>{
+    chatBox.classList.remove("active");
+}
+
+function scrollToBottom(){
+    chatBox.scrollTo({top:chatBox.scrollHeight,behavior:'smooth'});
+}
+
 setInterval(()=>{
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "php/get-chat.php",true);
@@ -77,6 +90,9 @@ setInterval(()=>{
             if(xhr.status === 200){
                 let data = xhr.response;
                 chatBox.innerHTML = data;
+                if(!chatBox.classList.contains("active")){
+                    scrollToBottom();
+                }
             }
         }
     }

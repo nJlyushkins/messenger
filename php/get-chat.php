@@ -17,7 +17,7 @@
                                     </div>
                                 </div>';
                 }else{
-                    $output .= '<div class="chat incoming">
+                    $output .= '<div class="chat incoming" name="'.$row['msg_id'].'">
                                     <div class="details">
                                         <p>'.$row['msg'].'</p>
                                     </div>
@@ -27,6 +27,6 @@
             echo $output;
         }
     }else{
-        header("../index.php");
+        header("../login.php");
     }
 ?>

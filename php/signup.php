@@ -13,7 +13,19 @@
                 echo "$email already signed up!";
             }
             else{
-                if(isset($_FILES['image'])){
+                if(mb_strlen($fname) < 2 || mb_strlen($fname) > 25){
+                    echo 'Недопустимая длина имени!';
+                    exit();
+                }
+                elseif(mb_strlen($lname) < 2 || mb_strlen($lname) > 25){
+                    echo 'Недопустимая длина фамилии!';
+                    exit();
+                }
+                elseif(mb_strlen($pswrd) < 2 || mb_strlen($pswrd) > 25){
+                    echo 'Недопустимая длина пароля!';
+                    exit();
+                }
+                elseif(isset($_FILES['image'])){
                     $img_name = $_FILES['image']['name'];
                     $tmp_name = $_FILES['image']['tmp_name'];
 
@@ -23,7 +35,8 @@
                     $extensions = ['png','jpg','jpeg'];
                     if(in_array($img_ext,$extensions) === true){
                         $time = time();
-                        $new_img_name = $time.$img_name;
+                        (strlen($img_name)>48)?$img_name_s=substr($img_name,0,48) : $img_name_s=$img_name;
+                        $new_img_name = $time.$img_name_s;
                         
                         if(move_uploaded_file($tmp_name, "img/".$new_img_name)){
                             $status = 1;

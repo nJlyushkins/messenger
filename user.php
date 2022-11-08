@@ -30,7 +30,7 @@
                         <li><a href="#"><i class="fa fa-comment"></i>Чаты</a></li>
                         <li><a href="#"><i class="fa fa-gamepad"></i>Игры</a></li>
                         <li><a href="#"><i class="fa fa-gear"></i>Настройки</a></li>
-                        <li><a href="#"><i class="fa fa-right-from-bracket"></i>Выход</a></li>
+                        <li><a href="php/logout.php?logout_id=<?php echo $row['unique_id']?>"><i class="fa fa-right-from-bracket"></i>Выход</a></li>
                     </ul>
                 </div>
                 <div class="main-content">

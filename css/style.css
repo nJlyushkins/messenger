@@ -153,6 +153,7 @@ form .name-details .field:last-child{
 }
 .prof-info .avatar{
     width:65px;
+    height:65px;
     border-radius:50%;
     object-fit: cover;
     border:2px solid #fff;
@@ -239,7 +240,7 @@ form .name-details .field:last-child{
     color:rgb(28, 197, 28);
 }
 .users-list a .details span .status-dot.offline{
-    color:#333;
+    color:rgba(51,51,51,0.5);
 }
 .users-list a .details span i{
     padding-top:2px;
@@ -254,6 +255,7 @@ form .name-details .field:last-child{
 }
 .users-list a .avatar{
     width:65px;
+    height:65px;
     border-radius:50%;
     object-fit: cover;
     border:2px solid #fff;
@@ -301,6 +303,7 @@ form .name-details .field:last-child{
 .outgoing .details p{
     padding: 10px;
     text-align: center;
+    word-break:break-all;
 }
 .outgoing .details{
     background:#333;
@@ -317,6 +320,7 @@ form .name-details .field:last-child{
 .incoming .details p{
     padding: 10px;
     text-align: center;
+    word-break:break-all;
 }
 .incoming .details{
     background:#fff;
@@ -364,6 +368,7 @@ form .name-details .field:last-child{
 }
 .chat-box .user .avatar{
     width:70px;
+    height:70px;
     border-radius:50%;
     object-fit: cover;
     border:2px solid #fff;
