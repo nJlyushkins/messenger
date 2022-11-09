@@ -5,7 +5,7 @@ xhr.onload = () =>{
         if(xhr.status === 200){
             let data = xhr.response;
             if(data == "index"){
-                document.location.href="user.php";
+                document.location.href="chat.php";
             }
             else{
                 document.location.href="login.php";

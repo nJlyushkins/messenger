@@ -81,6 +81,6 @@
                 </div>
             </div>
         </div>
-        <script src="js/user.js"></script>
+        <script src="js/chat.js"></script>
     </body>
 </html>

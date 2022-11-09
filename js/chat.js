@@ -56,9 +56,9 @@ searchBar.onkeyup = () =>{
 }
 
 setInterval(()=>{
-    if(!searchBar.classList.contains("active")){
+    if(!searchBar.classList.contains("active") && !usersList.classList.contains("active")){
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", "php/user.php",true);
+        xhr.open("GET", "php/chat.php",true);
         xhr.onload = () =>{
             if(xhr.readyState === XMLHttpRequest.DONE){
                 if(xhr.status === 200){
@@ -69,13 +69,20 @@ setInterval(()=>{
         }
         xhr.send();
     }
-},500);
+},1000);
 
 chatBox.onmouseenter = () =>{
     chatBox.classList.add("active");
 }
 chatBox.onmouseleave = () =>{
     chatBox.classList.remove("active");
+}
+
+usersList.onmouseenter = () =>{
+    usersList.classList.add("active");
+}
+usersList.onmouseleave = () =>{
+    usersList.classList.remove("active");
 }
 
 function scrollToBottom(){

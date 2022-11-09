@@ -15,7 +15,7 @@ continueBtn.onclick = () =>{
                 let data = xhr.response;
                 if(data == "success"){
                     errorText.style.display = "none";
-                    location.href = "user.php";
+                    location.href = "chat.php";
                 }else{
                     errorText.textContent = data;
                     errorText.style.display = "block";

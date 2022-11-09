@@ -261,6 +261,7 @@ form .name-details .field:last-child{
     border:2px solid #fff;
 }
 .chat-box{
+    display:none;
     width:65%;
     height:100%;
     margin-left:5px;

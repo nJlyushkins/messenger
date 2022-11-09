@@ -4,21 +4,24 @@
                 AND (incoming_msg_id = {$outgoing_id} OR outgoing_msg_id = {$outgoing_id}) ORDER BY msg_id DESC LIMIT 1";
         $query2 = mysqli_query($conn,$sql2);
         $row2 = mysqli_fetch_assoc($query2);
-        if(mysqli_num_rows($query2) > 0){
-            $result = $row2['msg'];
-        }else{
-            $result = "Нет сообщений";
+        if($row['unique_id'] != $_SESSION['unique_id']){
+            if(mysqli_num_rows($query2) > 0){
+                $result = $row2['msg'];
+            }else{
+                $result = "Нет сообщений";
+            }
+
+            (strlen($result)>48)?$msg=substr($result,0,48).'...' : $msg=$result;
+            (!$row['status']) ? $offline = "offline" : $offline = "";
+
+            $output .= '<a href="chat.php?user_id='.$row['unique_id'].'" class="open-chat-btn">
+                            <img src="php/img/'. $row['img']. '" alt="Упс..." class="avatar">
+                            <div class="details">
+                                <span>'. $row['fname'] . " ". $row['lname'] .'<div class="status-dot '.$offline.'"><i class="fa fa-circle"></i></div></span>
+                                <p>'.$msg.'</p>
+                            </div>
+                            <script type="javascript" src="js/chat-display.js"></script>
+                        </a>';
         }
-
-        (strlen($result)>48)?$msg=substr($result,0,48).'...' : $msg=$result;
-        (!$row['status']) ? $offline = "offline" : $offline = "";
-
-        $output .= '<a href="user.php?user_id='.$row['unique_id'].'">
-                        <img src="php/img/'. $row['img']. '" alt="Упс..." class="avatar">
-                        <div class="details">
-                            <span>'. $row['fname'] . " ". $row['lname'] .'<div class="status-dot '.$offline.'"><i class="fa fa-circle"></i></div></span>
-                            <p>'.$msg.'</p>
-                        </div>
-                    </a>';
     }
 ?>
